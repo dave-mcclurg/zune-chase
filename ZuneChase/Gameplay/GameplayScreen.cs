@@ -35,8 +35,30 @@ namespace ZuneChase.Gameplay
     /// drawing the ground, clouds, sun, and moon.  also handles animating them
     /// and day/night transitions
     /// </summary>
-    public class GameplayScreen : GameScreen
+    public sealed class GameplayScreen : GameScreen
     {
+        #region singleton
+        // http://www.yoda.arachsys.com/csharp/singleton.html
+        public static GameplayScreen Instance
+        {
+            get
+            {
+                return Nested.instance;
+            }
+        }
+
+        class Nested
+        {
+            // Explicit static constructor to tell C# compiler
+            // not to mark type as beforefieldinit
+            static Nested()
+            {
+            }
+
+            internal static readonly GameplayScreen instance = new GameplayScreen();
+        }
+        #endregion // singleton
+
         bool gameOver = false;
         Song mysong;
 
@@ -58,7 +80,7 @@ namespace ZuneChase.Gameplay
         internal World world;
         internal Player player;
 
-        public GameplayScreen()
+        private GameplayScreen()
         {
             TransitionOnTime = TimeSpan.FromSeconds(1.5);
             TransitionOffTime = TimeSpan.FromSeconds(0.5);
@@ -220,19 +242,12 @@ namespace ZuneChase.Gameplay
                 f.Load();
                 boidManager.List.Add(f);
             }
-
             for (int i = 0; i < 2; i++)
             {
                 Butterfly b = new Butterfly(this);
                 b.Load();
                 boidManager.List.Add(b);
             }
-
-            //foreach (Firefly f in fireflyManager.list)
-            //{
-            //    f.MaxSpeed = 75;
-            //    f.MaxForce = 3 * f.MaxSpeed;
-            //}
         }
 
         void CheckCapture()

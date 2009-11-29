@@ -30,8 +30,12 @@ namespace ZuneChase.Gameplay
 
             Position = initPos;
 
-            MaxForce = 5 * 1.65f;
-            MaxSpeed = MathHelper.Lerp(8, 12, screen.random.NextFloat()) * 1.65f;
+            MaxForce = 5;
+            MaxSpeed = MathHelper.Lerp(8, 12, screen.random.NextFloat());
+
+            MaxForce *= 2; // 1.65f;
+            MaxSpeed *= 2; // 1.65f;
+
             Speed = MathHelper.Lerp(MaxSpeed / 2, MaxSpeed, screen.random.NextFloat());
 
             float angle = (float)(screen.random.NextFloat() * MathHelper.TwoPi);
@@ -85,20 +89,6 @@ namespace ZuneChase.Gameplay
             //}
         }
 
-        public Vector3 steerInsideWorldLimits()
-        {
-            BoundingBox limits = Screen.world.Limits;
-            if (Math.Abs(Position.X) < limits.Max.X * 0.7f &&
-                Math.Abs(Position.Y) < limits.Max.Y * 0.7f)
-                return Vector3.Zero;
-
-            float scale = Math.Abs(Position.X) / limits.Max.X;
-            scale = Math.Max(scale, Math.Abs(Position.Y) / limits.Max.Y);
-
-            // steer back when outside
-            return steerForSeek(Vector3.Zero) * scale;
-        }
-
         /// <summary>
         /// update time step
         /// </summary>
@@ -106,8 +96,22 @@ namespace ZuneChase.Gameplay
         public override void Update(float dt)
         {
             Vector3 wander2d = steerForWander(dt);
-            Vector3 steer = Forward + wander2d * 12;
-            steer = steer * MaxSpeed + steerInsideWorldLimits() * 2;
+            Vector3 limit2d = steerInsideWorldLimits();
+            Vector3 steer = Forward + wander2d + limit2d * 3;
+            
+            steer = steer * MaxSpeed;
+
+            //if (limit2d.LengthSquared() > 0)
+            //{
+                //Vector2 spos = Screen.world.Project(Position);
+                //Vector3 dir = limit2d * 20;
+                //Screen.drawPrims.AddLine(spos.X, spos.Y, spos.X + dir.X, spos.Y - dir.Y, Color.Yellow);
+            //}
+
+            //Vector2 spos = Screen.world.Project(Position);
+            //Screen.drawText.Add(string.Format("{0:0.00}", (float)WanderSide),
+            //    //string.Format("({0:0.00},{1:0.00}", wander2d.X, wander2d.Y),
+            //    new Vector2(spos.X + 5, spos.Y + 5));
 
             //Vector3 eOffset = Position - screen.player.Position;
             //float eDistance = eOffset.Length();
@@ -127,17 +131,7 @@ namespace ZuneChase.Gameplay
             //smoothSteer = Vector3.Lerp(smoothSteer, steer, smoothRate);
             //ApplySteering(adjustRawSteeringForce(smoothSteer), dt);
 
-            steer = adjustRawSteeringForce(steer);
-
-            Vector2 spos = Screen.world.Project(Position);
-            Vector3 dir = Forward * 20;
-            Screen.drawPrims.AddLine(spos.X, spos.Y, spos.X + dir.X, spos.Y - dir.Y, Color.Red);
-
-            ApplySteering(steer, dt);
-
-            steer.Normalize();
-            dir = steer*20;
-            Screen.drawPrims.AddLine(spos.X, spos.Y, spos.X + dir.X, spos.Y - dir.Y, Color.White);
+            ApplySteering(adjustRawSteeringForce(steer), dt);
 
             alpha.Update(dt);
             radiusOffset.Update(dt);

@@ -1,3 +1,7 @@
+// ZuneChase - A game designed for your zune.
+// Copyright (c) 2009 David McClurg <dpm@efn.org>
+// Under the MIT License, details: License.txt.
+
 using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;

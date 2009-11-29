@@ -1,4 +1,8 @@
-﻿using System;
+﻿// ZuneChase - A game designed for your zune.
+// Copyright (c) 2009 David McClurg <dpm@efn.org>
+// Under the MIT License, details: License.txt.
+
+using System;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -77,12 +81,11 @@ namespace ZuneChase.Gameplay
             //}
         }
 
-        public void Add(string s)
+        public void Add(string s, Vector2 p)
         {
-            GraphicsDevice gd = Screen.ScreenManager.GraphicsDevice;
-
-            Vector2 centerPos = new Vector2(gd.Viewport.Width / 2, gd.Viewport.Height / 2);
-            Vector2 p = centerPos - defaultFont.MeasureString(s) / 2;
+            //GraphicsDevice gd = Screen.ScreenManager.GraphicsDevice;
+            //Vector2 centerPos = new Vector2(gd.Viewport.Width / 2, gd.Viewport.Height / 2);
+            //Vector2 p = centerPos - defaultFont.MeasureString(s) / 2;
 
             drawList.Add(new Text(defaultFont, s, p, Color.Yellow));
         }
