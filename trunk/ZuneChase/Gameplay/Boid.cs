@@ -168,6 +168,14 @@ namespace ZuneChase.Gameplay
             pos.X = MathHelper.Clamp(pos.X, Screen.world.Limits.Min.X + Radius, Screen.world.Limits.Max.X - Radius);
             pos.Y = MathHelper.Clamp(pos.Y, Screen.world.Limits.Min.Y + Radius, Screen.world.Limits.Max.Y - Radius);
             Position = pos;
+
+#if false
+            Vector2 spos = Screen.world.Project(Position);
+            Vector3 dir = Forward * 20;
+            Screen.drawPrims.AddLine(spos.X, spos.Y, spos.X + dir.X, spos.Y - dir.Y, Color.Red);
+            dir = steering * (20 / MaxSpeed);
+            Screen.drawPrims.AddLine(spos.X, spos.Y, spos.X + dir.X, spos.Y - dir.Y, Color.White);
+#endif
         }
 
         /// <summary>
@@ -194,7 +202,7 @@ namespace ZuneChase.Gameplay
         /// <summary>
         /// wander controller
         /// </summary>
-        Controller WanderSide = new Controller(0, 1, -1, +1, Controller.Mode.WANDER);
+        public Controller WanderSide = new Controller(0, 1, -1, +1, Controller.Mode.WANDER);
 
         /// <summary>
         /// steer for wander
@@ -236,6 +244,25 @@ namespace ZuneChase.Gameplay
         {
             // steering to flee from enemy's future position
             return steerForFlee(e.predictFuturePosition(1));
+        }
+
+        public Vector3 steerInsideWorldLimits()
+        {
+            Vector3 Radius = (Screen.world.Limits.Max - Screen.world.Limits.Min) / 2;
+            Vector3 Center = (Screen.world.Limits.Max + Screen.world.Limits.Min) / 2;
+
+            Vector3 relPos = Position - Center;
+            relPos.X = Math.Abs(relPos.X / Radius.X);
+            relPos.Y = Math.Abs(relPos.Y / Radius.Y);
+
+            if (relPos.X < 0.7f && relPos.Y < 0.7f)
+                return Vector3.Zero;
+
+            float scale = Math.Max(relPos.X, relPos.Y);
+            scale = (scale - 0.7f) / 0.3f;
+
+            // steer back when outside
+            return steerForSeek(Vector3.Zero) * (scale / MaxSpeed);
         }
     }
 

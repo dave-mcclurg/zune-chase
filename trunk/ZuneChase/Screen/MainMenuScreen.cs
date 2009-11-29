@@ -54,7 +54,7 @@ namespace GameState
         /// </summary>
         void PlayGameMenuEntrySelected(object sender, EventArgs e)
         {
-            LoadingScreen.Load(ScreenManager, true, new ZuneChase.Gameplay.GameplayScreen());
+            LoadingScreen.Load(ScreenManager, true, ZuneChase.Gameplay.GameplayScreen.Instance);
         }
 
 

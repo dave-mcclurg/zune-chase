@@ -40,7 +40,6 @@ namespace ZuneChase.Gameplay
             CUBIC,      // ease in/out
         }
 
-        Random random = null;
         Curve curve = Curve.LINEAR;
         Mode mode;
         int ringCounter;
@@ -215,11 +214,7 @@ namespace ZuneChase.Gameplay
                 case Mode.WANDER: // Wander randomly back and forth
                     {
                         // create a random number generator if needed
-                        if (null == random)
-                        {
-                            random = new Random(Environment.TickCount);
-                        }
-                        float rand01 = (float)random.NextDouble(); // 0 to 1
+                        float rand01 = (float)GameplayScreen.Instance.random.NextDouble(); // 0 to 1
                         pos = pos + (((rand01 * 2) - 1) * dt);
                         pos = MathHelper.Clamp(pos, min, max);
                     }

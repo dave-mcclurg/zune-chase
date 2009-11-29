@@ -83,20 +83,6 @@ namespace ZuneChase.Gameplay
             //}
         }
 
-        public Vector3 steerInsideWorldLimits()
-        {
-            BoundingBox limits = Screen.world.Limits;
-            if (Math.Abs(Position.X) < limits.Max.X * 0.7f &&
-                Math.Abs(Position.Y) < limits.Max.Y * 0.7f)
-                return Vector3.Zero;
-
-            float scale = Math.Abs(Position.X) / limits.Max.X;
-            scale = Math.Max(scale, Math.Abs(Position.Y) / limits.Max.Y);
-
-            // steer back when outside
-            return steerForSeek(Vector3.Zero) * scale;
-        }
-
         /// <summary>
         /// update time step
         /// </summary>
@@ -104,8 +90,10 @@ namespace ZuneChase.Gameplay
         public override void Update(float dt)
         {
             Vector3 wander2d = steerForWander(dt);
-            Vector3 steer = Forward + wander2d * 12;
-            steer = steer * MaxSpeed + steerInsideWorldLimits() * 2;
+            Vector3 limit2d = steerInsideWorldLimits();
+            Vector3 steer = Forward + wander2d + limit2d * 3;
+
+            steer = steer * MaxSpeed;
 
             //Vector3 eOffset = Position - screen.player.Position;
             //float eDistance = eOffset.Length();
