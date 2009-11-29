@@ -1,0 +1,310 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="3.5">
+  <PropertyGroup>
+    <ProjectGuid>425c4229-e5cf-4cb3-b62c-a06506e95ca0</ProjectGuid>
+    <ProjectTypeGuids>{96E2B04D-8817-42c6-938A-82C39BA4D311};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <XnaFrameworkVersion>v3.1</XnaFrameworkVersion>
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\$(Platform)\$(Configuration)</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <XnaPlatform>Windows</XnaPlatform>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <XnaPlatform>Windows</XnaPlatform>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.EffectImporter, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.FBXImporter, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.TextureImporter, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.XImporter, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.AudioImporters, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=3.1.0.0, Culture=neutral, PublicKeyToken=6d5c3888ef60e27d, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ZuneChase\Content\Fonts\gamefont.spritefont">
+      <Link>Fonts\gamefont.spritefont</Link>
+      <Name>gamefont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Fonts\menufont.spritefont">
+      <Link>Fonts\menufont.spritefont</Link>
+      <Name>menufont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Fonts\Pescadero.spritefont">
+      <Link>Fonts\Pescadero.spritefont</Link>
+      <Name>Pescadero</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Fonts\ScoreFont.spritefont">
+      <Link>Fonts\ScoreFont.spritefont</Link>
+      <Name>ScoreFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Fonts\TitleFont.spritefont">
+      <Link>Fonts\TitleFont.spritefont</Link>
+      <Name>TitleFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ZuneChase\Content\Sounds\ambient.mp3">
+      <Link>Sounds\ambient.mp3</Link>
+      <Name>ambient</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Sounds\flap.wav">
+      <Link>Sounds\flap.wav</Link>
+      <Name>flap</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Sounds\powerup.wav">
+      <Link>Sounds\powerup.wav</Link>
+      <Name>powerup</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Sounds\sonar.wav">
+      <Link>Sounds\sonar.wav</Link>
+      <Name>sonar</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ZuneChase\Content\Textures\boid.png">
+      <Link>Textures\boid.png</Link>
+      <Name>boid</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\fire.png">
+      <Link>Textures\fire.png</Link>
+      <Name>fire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\smoke.png">
+      <Link>Textures\smoke.png</Link>
+      <Name>smoke</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ZuneChase\Content\Textures\bat_animated\bat_animated %2801%29.png">
+      <Link>Textures\bat_animated\bat_animated %2801%29.png</Link>
+      <Name>bat_animated %2801%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\bat_animated\bat_animated %2802%29.png">
+      <Link>Textures\bat_animated\bat_animated %2802%29.png</Link>
+      <Name>bat_animated %2802%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\bat_animated\bat_animated %2803%29.png">
+      <Link>Textures\bat_animated\bat_animated %2803%29.png</Link>
+      <Name>bat_animated %2803%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\bat_animated\bat_animated %2804%29.png">
+      <Link>Textures\bat_animated\bat_animated %2804%29.png</Link>
+      <Name>bat_animated %2804%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\bat_animated\bat_animated %2805%29.png">
+      <Link>Textures\bat_animated\bat_animated %2805%29.png</Link>
+      <Name>bat_animated %2805%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\bat_animated\bat_animated %2806%29.png">
+      <Link>Textures\bat_animated\bat_animated %2806%29.png</Link>
+      <Name>bat_animated %2806%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ZuneChase\Content\Textures\butterfly\butterfly %2801%29.png">
+      <Link>Textures\butterfly\butterfly %2801%29.png</Link>
+      <Name>butterfly %2801%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\butterfly\butterfly %2802%29.png">
+      <Link>Textures\butterfly\butterfly %2802%29.png</Link>
+      <Name>butterfly %2802%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\butterfly\butterfly %2803%29.png">
+      <Link>Textures\butterfly\butterfly %2803%29.png</Link>
+      <Name>butterfly %2803%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\butterfly\butterfly %2804%29.png">
+      <Link>Textures\butterfly\butterfly %2804%29.png</Link>
+      <Name>butterfly %2804%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\butterfly\butterfly %2805%29.png">
+      <Link>Textures\butterfly\butterfly %2805%29.png</Link>
+      <Name>butterfly %2805%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\butterfly\butterfly %2806%29.png">
+      <Link>Textures\butterfly\butterfly %2806%29.png</Link>
+      <Name>butterfly %2806%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\butterfly\butterfly %2807%29.png">
+      <Link>Textures\butterfly\butterfly %2807%29.png</Link>
+      <Name>butterfly %2807%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\butterfly\butterfly %2808%29.png">
+      <Link>Textures\butterfly\butterfly %2808%29.png</Link>
+      <Name>butterfly %2808%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\butterfly\butterfly %2809%29.png">
+      <Link>Textures\butterfly\butterfly %2809%29.png</Link>
+      <Name>butterfly %2809%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\butterfly\butterfly %2810%29.png">
+      <Link>Textures\butterfly\butterfly %2810%29.png</Link>
+      <Name>butterfly %2810%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\butterfly\butterfly %2811%29.png">
+      <Link>Textures\butterfly\butterfly %2811%29.png</Link>
+      <Name>butterfly %2811%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\butterfly\butterfly %2812%29.png">
+      <Link>Textures\butterfly\butterfly %2812%29.png</Link>
+      <Name>butterfly %2812%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ZuneChase\Content\Textures\Menus\blank.png">
+      <Link>Textures\Menus\blank.png</Link>
+      <Name>blank</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\Menus\gradient.png">
+      <Link>Textures\Menus\gradient.png</Link>
+      <Name>gradient</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\Menus\MenuBackground.png">
+      <Link>Textures\Menus\MenuBackground.png</Link>
+      <Name>MenuBackground</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\Menus\title.png">
+      <Link>Textures\Menus\title.png</Link>
+      <Name>title</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ZuneChase\Content\Textures\night_sky\night_sky %2801%29.jpg">
+      <Link>Textures\night_sky\night_sky %2801%29.jpg</Link>
+      <Name>night_sky %2801%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\night_sky\night_sky %2802%29.jpg">
+      <Link>Textures\night_sky\night_sky %2802%29.jpg</Link>
+      <Name>night_sky %2802%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\night_sky\night_sky %2803%29.jpg">
+      <Link>Textures\night_sky\night_sky %2803%29.jpg</Link>
+      <Name>night_sky %2803%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\night_sky\night_sky %2804%29.jpg">
+      <Link>Textures\night_sky\night_sky %2804%29.jpg</Link>
+      <Name>night_sky %2804%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Textures\night_sky\night_sky %2805%29.jpg">
+      <Link>Textures\night_sky\night_sky %2805%29.jpg</Link>
+      <Name>night_sky %2805%29</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\ZuneChase\Content\Sounds\flap\flap %2801%29.wav">
+      <Link>Sounds\flap\flap %2801%29.wav</Link>
+      <Name>flap %2801%29</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+    <Compile Include="..\..\ZuneChase\Content\Sounds\flap\flap %2802%29.wav">
+      <Link>Sounds\flap\flap %2802%29.wav</Link>
+      <Name>flap %2802%29</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

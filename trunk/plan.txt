@@ -1,0 +1,17 @@
+- Stun fireflies with sonar
+   draw arcs at high speed
+   fireflies stop moving for a while
+
+- work on nextlevel()
+   use different background
+   make fireflies smarter
+   make fireflies faster
+   add butterflies
+
+- think about supporting 3d
+   show fireflies in distance
+   non-interactive swarms
+   flocking behavior
+   use alpha and size to avoid confusion
+
+- multiplayer
